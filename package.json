@@ -1,0 +1,99 @@
+{
+  "name": "tsmc-career-hack-fcu2ncu-extension",
+  "displayName": "tsmc-career-hack-fcu2ncu-extension",
+  "description": "AI Agent for Development",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.explorer.convertTo",
+        "title": "convertTo"
+      },
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.explorer.optimize",
+        "title": "Optimize"
+      },
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.explorer.detectError",
+        "title": "DetectError"
+      },
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.editor.convertTo",
+        "title": "convertTo"
+      },
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.editor.optimize",
+        "title": "Optimize"
+      },
+      {
+        "command": "tsmc-career-hack-fcu2ncu-extension.editor.detectError",
+        "title": "DetectError"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.explorer.convertTo",
+          "when": "resourceExtname",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        },
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.explorer.optimize",
+          "when": "resourceExtname",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        },
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.explorer.detectError",
+          "when": "resourceExtname",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.editor.convertTo",
+          "when": "editorHasSelection",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        },
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.editor.optimize",
+          "when": "editorHasSelection",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        },
+        {
+          "command": "tsmc-career-hack-fcu2ncu-extension.editor.detectError",
+          "when": "editorHasSelection",
+          "group": "tsmc-career-hack-fcu2ncu-extension"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.97.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
