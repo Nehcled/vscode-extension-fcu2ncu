@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { gemini } from './agent';
 
 const helloWorld = () => {
     // The code you place here will be executed every time your command is executed
@@ -383,7 +384,9 @@ const detectErrorEditor = async () => {
 
 //call llm following 3 function.
 const getOptimizeCode = async(originalCode: string) => {
-    return originalCode;
+    const prompt = `"You are an AI coding assistant with a focus on optimization. I need you to optimize the following code snippet. The goal is to improve performance, readability, and efficiency **without changing its functionality or output**. Focus on refactoring redundant logic, optimizing loops, reducing memory overhead, and improving code clarity. You do not need to provide an explanation, but feel free to include comments in the optimized code. Just return the optimized code in a format that can be directly written into a file.\n\nHere is the code to optimize:\n\n${originalCode}\n\nReturn only the optimized code."`
+    const result = await gemini(prompt);
+    return await  result || originalCode;
 }
 const getConvertCode = async(originalCode: string, env: any) =>{
     return originalCode;

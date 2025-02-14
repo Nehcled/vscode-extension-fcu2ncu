@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as functions from './functions';
+import { gemini } from './agent';
 
 // vscode.workspace.onDidChangeConfiguration((event) => {
 // 	if (event.affectsConfiguration("myExtension.enableFeature")) {
@@ -24,6 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 		{ command: 'tsmc-career-hack-fcu2ncu-extension.editor.convertTo', callback: functions.editor.convertTo },
 		{ command: 'tsmc-career-hack-fcu2ncu-extension.editor.optimize', callback: functions.editor.optimize },
 		{ command: 'tsmc-career-hack-fcu2ncu-extension.editor.detectError', callback: functions.editor.detectError },
+		{ command: 'tsmc-career-hack-fcu2ncu-extension.gemini', callback: ()=>gemini("hello")}
 	]
 
 	for (const { command, callback } of commandList) {
