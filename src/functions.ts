@@ -384,20 +384,21 @@ const detectErrorEditor = async () => {
 
 //call llm following 3 function.
 const getOptimizeCode = async(originalCode: string) => {
-    const prompt = `請幫我在不修改程式邏輯與輸出的前提下優化以下這段程式碼: ${originalCode}，並且只需要輸出優化後的結果，不需要解釋。`
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下優化以下這段程式碼: ${originalCode}，並且只需要輸出優化後的結果，不需要解釋，不要code block。`
     const result = await gemini(prompt);
     return await  result || originalCode;
 }
 const getConvertCode = async(originalCode: string, env: any) =>{
-    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode}，根據環境設定:${env} 轉換對應的程式語言或版本(例如python to java 、 java9 to java11等)並且只需要輸出轉換後的結果，不需要解釋。`
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode}，根據環境設定:${env} 轉換對應的程式語言或版本(例如python to java 、 java9 to java11等)並且只需要輸出轉換後的結果，不需要解釋，不要code block。`
     const result = await gemini(prompt);
     return await  result || originalCode;
 }
 const getFixCode = async(originalCode: string) => {
-    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode} 的錯誤修正，並且只需要輸出轉換後的結果，不需要解釋。`
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode} 的錯誤修正，並且只需要輸出轉換後的結果，不需要解釋，不要code block。`
     const result = await gemini(prompt);
     return await  result || originalCode;
 }
+
 
 
 export const explorer = {
