@@ -384,15 +384,19 @@ const detectErrorEditor = async () => {
 
 //call llm following 3 function.
 const getOptimizeCode = async(originalCode: string) => {
-    const prompt = `"You are an AI coding assistant with a focus on optimization. I need you to optimize the following code snippet. The goal is to improve performance, readability, and efficiency **without changing its functionality or output**. Focus on refactoring redundant logic, optimizing loops, reducing memory overhead, and improving code clarity. You do not need to provide an explanation, but feel free to include comments in the optimized code. Just return the optimized code in a format that can be directly written into a file.\n\nHere is the code to optimize:\n\n${originalCode}\n\nReturn only the optimized code."`
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下優化以下這段程式碼: ${originalCode}，並且只需要輸出優化後的結果，不需要解釋。`
     const result = await gemini(prompt);
     return await  result || originalCode;
 }
 const getConvertCode = async(originalCode: string, env: any) =>{
-    return originalCode;
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode}，根據環境設定:${env} 轉換對應的程式語言或版本(例如python to java 、 java9 to java11等)並且只需要輸出轉換後的結果，不需要解釋。`
+    const result = await gemini(prompt);
+    return await  result || originalCode;
 }
 const getFixCode = async(originalCode: string) => {
-    return originalCode;
+    const prompt = `請幫我在不修改程式邏輯與輸出的前提下將以下這段程式碼: ${originalCode} 的錯誤修正，並且只需要輸出轉換後的結果，不需要解釋。`
+    const result = await gemini(prompt);
+    return await  result || originalCode;
 }
 
 
